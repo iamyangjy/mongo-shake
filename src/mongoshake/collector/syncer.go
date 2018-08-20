@@ -264,7 +264,7 @@ func (sync *OplogSyncer) next() bool {
 		sync.replMetric.ReplStatus.Update(utils.FetchBad)
 		utils.YieldInMs(DurationTime)
 
-		// alarm // zhuzhao @ 2018_04_23
+		// alarm
 	}
 
 	// buffered oplog or trigger to flush. log is nil
@@ -324,7 +324,7 @@ func (sync *OplogSyncer) RestAPI() {
 	utils.HttpApi.RegisterAPI("/repl", nimo.HttpGet, func([]byte) interface{} {
 		return &Info{
 			Who:         conf.Options.CollectorId,
-			Tag:         utils.VERSION,
+			Tag:         utils.BRANCH,
 			ReplicaSet:  sync.replset,
 			Logs:        sync.replMetric.Get(),
 			LogsRepl:    sync.replMetric.Apply(),
